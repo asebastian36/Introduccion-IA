@@ -4,45 +4,26 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
 -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <head>
         <title>Pregunta</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
     <body>
-        <form>
-            <h1>Pregunta</h1>
-            <p>¿Cuál es tu color favorito?</p>
-
-            <label>
-                <input type="radio" name="color" value="opcion_a"/>
-                    Opción A - Rojo
-            </label>
-            
-            <br/>
-            
-            <label>
-                <input type="radio" name="color" value="opcion_b"/>
-                    Opción B - Azul
-            </label>
-            
-            <br/>
-            
-            <label>
-                <input type="radio" name="color" value="opcion_c"/>
-                    Opción C - Verde
-            </label>
-            
-            <br/>
-            
-            <label>
-                <input type="radio" name="color" value="opcion_d"/>
-                    Opción D - Amarillo
-            </label>
-
-            <br/>
-                <button type="submit">Enviar</button>
-        </form>
-
+        <h1>En que rango de edad te encuentras?</h1>
+        <h:form>
+            <h:selectOneRadio value="#{BeanAudiencia.respuesta}">
+                <c:forEach var="opcion" items="#{BeanAudiencia.audiencia}">
+                    <h:outputText value="#{BeanAudiencia.audiencia}" />
+                    <p>opcion: #{opcion}</p>
+                    <f:selectItem itemLabel="#{opcion}" itemValue="#{opcion}" />
+                </c:forEach>
+            </h:selectOneRadio>
+            <h:commandButton value="Enviar" action="#" />
+        </h:form>
     </body>
 </html>
