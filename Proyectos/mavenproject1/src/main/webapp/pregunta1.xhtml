@@ -16,14 +16,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
     <body>
         <h1>En que rango de edad te encuentras?</h1>
         <h:form>
-            <h:selectOneRadio value="#{BeanAudiencia.respuesta}">
-                <c:forEach var="opcion" items="#{BeanAudiencia.audiencia}">
-                    <h:outputText value="#{BeanAudiencia.audiencia}" />
-                    <p>opcion: #{opcion}</p>
+            <h:selectOneRadio value="">
+                <c:forEach items="#{requestScope.redes}" var="opcion">
                     <f:selectItem itemLabel="#{opcion}" itemValue="#{opcion}" />
                 </c:forEach>
             </h:selectOneRadio>
-            <h:commandButton value="Enviar" action="#" />
+            <h:commandButton value="Enviar" action="" />
         </h:form>
     </body>
 </html>
