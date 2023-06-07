@@ -8,10 +8,10 @@
         <title>Pregunta</title>
     </head>
     <body>
-        <h1>Con que enfoque te identificas?</h1>
-        <form action="Pregunta4" method="POST">
-            <c:forEach items="${requestScope.enfoques}" var="opcion">
-                <input type="radio" name="enfoque" value="${opcion}" id="${opcion}" required="true"/>
+        <h1>Con que funcionalidades te identificas?</h1>
+        <form action="Resultado" method="POST">
+            <c:forEach items="${requestScope.funcionalidades}" var="opcion">
+                <input type="radio" name="funcion" value="${opcion}" id="${opcion}" required="true"/>
                 <label for="${opcion}">${opcion}</label>
                 <br/>
                 <br/>
