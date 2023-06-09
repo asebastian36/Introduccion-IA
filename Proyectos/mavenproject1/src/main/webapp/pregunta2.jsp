@@ -6,6 +6,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Pregunta</title>
+        <link rel="stylesheet" href="resources/css/estilos.css" />
     </head>
     <body>
         <h1>Con que tematica te identificas mas?</h1>

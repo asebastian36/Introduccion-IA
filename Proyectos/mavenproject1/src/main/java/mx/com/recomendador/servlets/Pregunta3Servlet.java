@@ -1,17 +1,15 @@
 package mx.com.recomendador.servlets;
 
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.sql.SQLException;
+import java.util.*;
 import java.util.stream.Collectors;
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.*;
 import mx.com.recomendador.domain.RedSocial;
+import mx.com.recomendador.domain.Usuario;
+import mx.com.recomendador.service.UsuarioService;
 
 /**
  *
@@ -19,23 +17,31 @@ import mx.com.recomendador.domain.RedSocial;
  */
 
 @WebServlet("/Pregunta3")
-public class Pregunta3Servlet extends HttpServlet{
+public class Pregunta3Servlet extends HttpServlet {
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String respuesta = request.getParameter("tematica");
-        
+
         //  pregunta 3
         ServletContext application = getServletContext();
-        Set<RedSocial> redes = (Set<RedSocial>) application.getAttribute("resultadosAudiencia");
+        Set<RedSocial> redes = (Set<RedSocial>) application.getAttribute("resultados1");
 
-        Set<RedSocial> resultados = redes.stream().filter(red -> red.getTematica().toLowerCase().contains(respuesta)).collect(Collectors.toSet());
+        Set<RedSocial> resultados = redes.stream().filter(red -> red.getTematica().contains(respuesta)).collect(Collectors.toSet());
         if(resultados.size() == 1) {
-            
-            RequestDispatcher dispatcher = request.getRequestDispatcher("resultado.jsp");
-            dispatcher.forward(request, response);
+            try {
+                Usuario usuario = new Usuario();
+                usuario.setRecomendacion(resultados.iterator().next().getIdRedSocial());
+                UsuarioService.insertar(usuario);
+                request.setAttribute("resultadoFinal", resultados);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("resultado.jsp");
+                dispatcher.forward(request, response);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         } else {
             Set<String> enfoques = new HashSet<>();
             resultados.forEach(red -> enfoques.add(red.getEnfoque()));
-            application.setAttribute("resultadosEnfoque", resultados);
+            application.setAttribute("resultados2", resultados);
             request.setAttribute("enfoques", enfoques);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("pregunta3.jsp");

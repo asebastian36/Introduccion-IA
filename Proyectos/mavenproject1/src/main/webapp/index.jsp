@@ -1,13 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit this template
--->
+<%-- 
+    Document   : index
+    Created on : 7 jun 2023, 10:20:39
+    Author     : Angel Franco
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <title>Recomendador de redes</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="resources/css/estilos.css" />
     </head>
     <body>
         <h1>Recomendador de redes sociales</h1>
@@ -46,3 +49,4 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/XHtml.xhtml to edit t
         </form>
     </body>
 </html>
+

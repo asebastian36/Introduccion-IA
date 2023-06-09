@@ -25,6 +25,13 @@ public class Usuario {
         this.idUsuario = idUsuario;
     }
 
+    public Usuario(int recomendacion) {
+        this.recomendacion = recomendacion;
+    }
+
+    public Usuario() {
+    }
+    
     @Override
     public String toString() {
         return "recomendacion=" + this.recomendacion + ", idUsuario=" + this.idUsuario;

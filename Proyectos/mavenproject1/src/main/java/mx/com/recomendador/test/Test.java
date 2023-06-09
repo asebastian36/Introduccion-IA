@@ -53,7 +53,7 @@ public class Test {
             System.out.println("");
             
             //  tercer pregunta
-            Set<RedSocial> filtro2 = redes.stream().filter(red -> red.getTematica().contains(respuesta1)).collect(Collectors.toSet());
+            Set<RedSocial> filtro2 = filtro1.stream().filter(red -> red.getTematica().contains(respuesta1)).collect(Collectors.toSet());
             if(filtro2.size() == 1) System.out.println("Tu red social predilecta es: " + filtro2);
             else {
                 Set<String> enfoques = new HashSet<>();
@@ -77,8 +77,6 @@ public class Test {
                     System.out.println("");
                 }
             }
-            
-            
             
         } catch (SQLException ex) {
             ex.printStackTrace(System.out);

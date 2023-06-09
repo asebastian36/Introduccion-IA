@@ -1,6 +1,7 @@
 package mx.com.recomendador.servlets;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import mx.com.recomendador.domain.RedSocial;
+import mx.com.recomendador.domain.Usuario;
+import mx.com.recomendador.service.UsuarioService;
 
 /**
  *
@@ -26,12 +29,20 @@ public class Pregunta4Servlet extends HttpServlet{
         
         //  obtenemos las opciones a filtrar
         ServletContext application = getServletContext();
-        Set<RedSocial> redes = (Set<RedSocial>) application.getAttribute("resultadosEnfoque");
+        Set<RedSocial> redes = (Set<RedSocial>) application.getAttribute("resultados2");
 
-        Set<RedSocial> resultados = redes.stream().filter(red -> red.getTematica().contains(respuesta)).collect(Collectors.toSet());
+        Set<RedSocial> resultados = redes.stream().filter(red -> red.getEnfoque().contains(respuesta)).collect(Collectors.toSet());
         if(resultados.size() == 1) {
-            //  aqui va a ir el codigo que envie el resultado final
-            
+            try {
+                Usuario usuario = new Usuario();
+                usuario.setRecomendacion(resultados.iterator().next().getIdRedSocial());
+                UsuarioService.insertar(usuario);
+                request.setAttribute("resultadoFinal", resultados);
+                RequestDispatcher dispatcher = request.getRequestDispatcher("resultado.jsp");
+                dispatcher.forward(request, response);
+            } catch (SQLException ex) {
+                ex.printStackTrace();
+            }
         } else {
             Set<String> funcionalidades = new HashSet<>();
             resultados.forEach(instancia -> funcionalidades.add(instancia.getFuncionalidades()));

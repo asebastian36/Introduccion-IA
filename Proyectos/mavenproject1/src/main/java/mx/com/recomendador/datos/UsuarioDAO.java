@@ -84,19 +84,17 @@ public class UsuarioDAO {
         return usuario;
     }
     
-    public void insertar(Usuario usuario) throws SQLException {
+    public void insertar(Usuario usuario) throws SQLException  {
         Connection conexion = null;
         PreparedStatement instruccion = null;
-        ResultSet resultado = null;
 
         try {
             conexion = this.conexionTransacciones != null ? this.conexionTransacciones : Conexion.getConnection();
             instruccion = conexion.prepareStatement(SQL_INSERT);
-            resultado = instruccion.executeQuery();
-            
             instruccion.setInt(1, usuario.getRecomendacion());
+            instruccion.executeUpdate();
+            
         } finally {
-            Conexion.close(resultado);
             Conexion.close(instruccion);
             if (this.conexionTransacciones == null) {
                 Conexion.close(conexion);
