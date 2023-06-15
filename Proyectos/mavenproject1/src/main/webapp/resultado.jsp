@@ -12,7 +12,7 @@
         <h1>Resultado</h1>
         <c:forEach items="#{requestScope.resultadoFinal}" var="resultado">
             <h2>${resultado.nombre}</h2>
-            <img src=${resultado.ruta} alt=${resultado.ruta}>
+            <img src=${resultado.ruta} alt=${resultado.ruta} width=auto height="400px">
             <p>${resultado.descripcion}</p>
             <p>Se ha guardado con exito tu recomendacion!!</p> <br/>
         </c:forEach>

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="resources/css/estilos.css" />
     </head>
     <body>
-        <h1>En qué rango de edad te encuentras?</h1>
+        <h1>¿En qué tipo de audiencia te encuentras?</h1>
         <form action="Pregunta2" method="POST">
             <c:forEach items="${requestScope.audiencias}" var="opcion">
                 <input type="radio" name="audiencia" value="${opcion}" id="${opcion}" required="true"/>

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="resources/css/estilos.css" />
     </head>
     <body>
-        <h1>Con que funcionalidades te identificas?</h1>
+        <h1>¿Con que funcionalidades te identificas?</h1>
         <form action="Resultado" method="POST">
             <c:forEach items="${requestScope.funcionalidades}" var="opcion">
                 <input type="radio" name="funcion" value="${opcion}" id="${opcion}" required="true"/>

@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="resources/css/estilos.css" />
     </head>
     <body>
-        <h1>Con que enfoque te identificas?</h1>
+        <h1>¿Con que enfoque te identificas?</h1>
         <form action="Pregunta4" method="POST">
             <c:forEach items="${requestScope.enfoques}" var="opcion">
                 <input type="radio" name="enfoque" value="${opcion}" id="${opcion}" required="true"/>

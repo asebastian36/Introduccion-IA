@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="resources/css/estilos.css" />
     </head>
     <body>
-        <h1>Con que tematica te identificas mas?</h1>
+        <h1>¿Con que tematica te identificas mas?</h1>
         <form action="Pregunta3" method="POST">
             <c:forEach items="${requestScope.tematicas}" var="opcion">
                 <input type="radio" name="tematica" value="${opcion}" id="${opcion}" required="true"/>
